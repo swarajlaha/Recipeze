@@ -1,0 +1,22 @@
+{
+    "name": "recipeze",
+    "version": "1.0.0",
+    "description": "recipeze project",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/swarajlaha/Recipeze.git"
+    },
+    "author": "Swaraj Laha",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/swarajlaha/Recipeze/issues"
+    },
+    "homepage": "https://github.com/swarajlaha/Recipeze#readme",
+    "devDependencies": {
+        "webpack": "^4.39.2"
+    }
+}
