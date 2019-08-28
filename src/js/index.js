@@ -1,6 +1,7 @@
 import Search from './models/Search';
 import Recipe from './models/Recipe';
 import * as searchView from './views/searchView';
+import * as recipeView from './views/searchView';
 import { elements, renderLoader } from './views/base';
 /** Global state of the app
  * - Search ojc
