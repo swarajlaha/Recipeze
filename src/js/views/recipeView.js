@@ -1,3 +1,19 @@
+import { elements } from './base';
+export const clearRecipe = () => {
+    elements.recipe.innerHTML = '';
+}
+const createIngredient = ingredient => `
+    <li class="recipe__item">
+        <svg class="recipe__icon">
+            <use href="img/icons.svg#icon-check"></use>
+        </svg>
+        <div class="recipe__count">${ingredient.count}</div>
+        <div class="recipe__ingredient">
+            <span class="recipe__unit">${ingredient.unit</span>
+                ${ingredient.ingredient}
+        </div>
+    </li>
+`;
 export renderRecipe = recipe => {
     const markup = `
         <figure class="recipe__fig">
@@ -42,21 +58,9 @@ export renderRecipe = recipe => {
             </button>
         </div>
 
-
-
         <div class="recipe__ingredients">
             <ul class="recipe__ingredient-list">
-                <li class="recipe__item">
-                    <svg class="recipe__icon">
-                        <use href="img/icons.svg#icon-check"></use>
-                    </svg>
-                    <div class="recipe__count">1000</div>
-                    <div class="recipe__ingredient">
-                        <span class="recipe__unit">g</span>
-                        pasta
-                    </div>
-                </li>
-
+                ${recipe.ingredients.map(el => createIngredient(el)).join('')}
                 <li class="recipe__item">
                     <svg class="recipe__icon">
                         <use href="img/icons.svg#icon-check"></use>
@@ -93,4 +97,5 @@ export renderRecipe = recipe => {
             </a>
         </div>
     `;
+    elements.recipe.insertAdjacentHTML('afterbegin', markup);
 };
