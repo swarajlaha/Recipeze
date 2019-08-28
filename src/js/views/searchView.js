@@ -10,7 +10,7 @@ export const clearResults = () => {
 };
 
 export const highlightSelected = id => {
-    document.querySelector(`a[href=#${id}]`).classList.add('.results__link--active');
+    document.querySelector(`a[href="#${id}]"`).classList.add('.results__link--active');
 };
 
 const limitRecipeTitle = (title, limit = 17) => {
