@@ -7,15 +7,16 @@ export const clearRecipe = () => {
 const formatCount = count => {
     if (count) {
         // count = 2.5 --> 2 1/2
-        const [int, dec] = count.toString().split('.').map(el => parseInt(el));
+        const newCount = Math.round(count * 10000) / 10000;
+        const [int, dec] = newCount.toString().split('.').map(el => parseInt(el));
 
-        if (!dec) return count;
+        if (!dec) return newCount;
 
         if (int === 0) {
-            const fr = new Fraction(count);
+            const fr = new Fraction(newCount);
             return `${fr.numerator}/${fr.denominator}`;
         } else {
-            const fr = new Fraction(count - int);
+            const fr = new Fraction(newCount - int);
             return `${int} ${fr.numerator}/${fr.denominator}`;
         }
     }
@@ -28,7 +29,7 @@ const createIngredient = ingredient => `
         <svg class="recipe__icon">
             <use href="img/icons.svg#icon-check"></use>
         </svg>
-        <div class="recipe__count">${formatCount(ingredient.count)}</div>
+        <div class="recipe__newCount">${formatnewCount(ingredient.count)}</div>
         <div class="recipe__ingredient">
             <span class="recipe__unit">${ingredient.unit</span>
                 ${ingredient.ingredient}
@@ -38,10 +39,10 @@ const createIngredient = ingredient => `
 export const renderRecipe = (recipe, isLiked) => {
     const markup = `
         <figure class="recipe__fig">
-        <img src="${recipe.img}" alt="${recipe.title}" class="recipe__img">
-        <h1 class="recipe__title">
-            <span>${recipe.title}</span>
-        </h1>
+            <img src="${recipe.img}" alt="${recipe.title}" class="recipe__img">
+            <h1 class="recipe__title">
+                <span>${recipe.title}</span>
+            </h1>
         </figure>
         <div class="recipe__details">
             <div class="recipe__info">
@@ -127,6 +128,6 @@ export const updateServingsIngredients = recipe => {
     // Update ingredients  
     const countElements = Array.from(document.querySelectorAll('.recipe__count'));
     countElements.forEach((el, i) => {
-        el.textContent = formatCount(recipe.ingredients[i].count);
+        el.textContent = formatcount(recipe.ingredients[i].count);
     });
 };

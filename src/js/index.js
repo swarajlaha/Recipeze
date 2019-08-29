@@ -16,7 +16,6 @@ import { stat } from 'fs';
  * - Liked recipes
  */
 const state = {};
-window.state = state;
 
 /** SEARCH CONTROLLER */
 const controlSearch = async() => {
@@ -65,7 +64,6 @@ elements.searchResPages.addEventListener('click', e => {
 const controlRecipe = async() => {
     // Get ID from url.
     const id = window.location.hash.replace('#', '');
-    console.log(id);
     if (id) {
         // Prepare ui for changes.
         recipeView.clearRecipe();
@@ -207,5 +205,3 @@ elements.recipe.addEventListener('click', e => {
                     controlLike();
                 }
             });
-
-        window.l = new List();
